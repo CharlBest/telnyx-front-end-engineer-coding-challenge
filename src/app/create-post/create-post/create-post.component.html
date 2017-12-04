@@ -1,0 +1,53 @@
+<link href="https://cdn.quilljs.com/1.3.3/quill.snow.css"
+    rel="stylesheet">
+
+<br>
+<mat-card *ngIf="!showPreloader">
+    <mat-card-title>
+        Create Post
+    </mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form">
+
+            <mat-form-field>
+                <input type="text"
+                    formControlName="title"
+                    matInput
+                    placeholder="title"
+                    required />
+            </mat-form-field>
+
+            <br>
+
+            <mat-form-field>
+                <input type="text"
+                    formControlName="description"
+                    matInput
+                    placeholder="description"
+                    required />
+            </mat-form-field>
+
+            <br>
+
+            <div id="editor"></div>
+
+            <br>
+
+            <button (click)="back()"
+                type="button"
+                mat-button>Back</button>
+            <button (click)="createPost()"
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="!form.valid">Create Post</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="showPreloader">
+    <mat-card-content>
+        <mat-spinner class="preloader"></mat-spinner>
+    </mat-card-content>
+</mat-card>

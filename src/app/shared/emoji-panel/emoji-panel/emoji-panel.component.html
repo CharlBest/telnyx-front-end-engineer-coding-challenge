@@ -1,0 +1,27 @@
+<button type="button"
+  mat-icon-button
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+  (click)="isOpen = !isOpen">
+  <mat-icon>tag_faces</mat-icon>
+</button>
+
+<ng-template cdkConnectedOverlay
+  (backdropClick)="isOpen = false"
+  hasBackdrop
+  [backdropClass]="'emoji-panel-bakdrop'"
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isOpen">
+
+  <mat-tab-group (selectedTabChange)="onTabSelectChange($event)">
+    <mat-tab *ngFor="let category of emojiCategories">
+      <ng-template matTabLabel>
+        <mat-icon>{{category.tabLabelIcon}}</mat-icon>
+      </ng-template>
+      <div [innerHTML]="category.tabHTMLContent"></div>
+      <div style="clear: both;"></div>
+      powered by EmojiOne
+    </mat-tab>
+  </mat-tab-group>
+
+</ng-template>

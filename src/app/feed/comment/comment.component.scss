@@ -1,0 +1,13 @@
+.post-comment-date {
+    font-weight: normal;
+    color: lightgrey;
+}
+
+.reply-block {
+    display: block;
+    margin-left: 100px;
+}
+
+.comment-content ::ng-deep img.emojione {
+    width: 1rem;
+}

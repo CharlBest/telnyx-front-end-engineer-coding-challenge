@@ -1,0 +1,87 @@
+<!-- Mobile -->
+<nav mat-tab-nav-bar
+    class="tab-nav-bar-show-small tab-nav-bar-small">
+    <a mat-button
+        routerLink="/">
+        <img class="logo"
+            src="../../../assets/logo.svg"
+            alt="logo">
+    </a>
+
+    <button mat-icon-button
+        [matMenuTriggerFor]="menu"
+        style="float: right;">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <a mat-icon-button
+        style="float: right; margin-top: 6px;"
+        routerLink="/create-post">
+        <mat-icon>add</mat-icon>
+    </a>
+
+    <div style="clear: both;"></div>
+</nav>
+
+<!-- Desktop -->
+<nav mat-tab-nav-bar
+    class="tab-nav-bar-large">
+    <a mat-button
+        routerLink="/"
+        class="tab-nav-bar-hide-small">
+        <img class="logo"
+            src="assets/logo.svg"
+            alt="logo">
+    </a>
+
+    <a mat-tab-link
+        routerLink="/"
+        routerLinkActive
+        #rla1="routerLinkActive"
+        [active]="rla1.isActive"
+        [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>home</mat-icon>
+        <span>&nbsp;Home</span>
+    </a>
+
+    <a mat-tab-link
+        routerLink="/feed"
+        routerLinkActive
+        #rla2="routerLinkActive"
+        [active]="rla2.isActive"
+        [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>rss_feed</mat-icon>
+        <span>&nbsp;Feed</span>
+    </a>
+
+    <a mat-tab-link
+        routerLink="/about"
+        routerLinkActive
+        #rla3="routerLinkActive"
+        [active]="rla3.isActive"
+        [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>info</mat-icon>
+        <span>&nbsp;About</span>
+    </a>
+
+    <button mat-icon-button
+        [matMenuTriggerFor]="menu"
+        style="float: right;"
+        class="tab-nav-bar-hide-small">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <a mat-button
+        class="tab-nav-bar-hide-small github-link"
+        routerLink="/create-post">
+        <mat-icon>add</mat-icon>
+        Create Post
+    </a>
+
+    <div style="clear: both;"></div>
+</nav>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item
+        routerLink="/">Help</button>
+</mat-menu>

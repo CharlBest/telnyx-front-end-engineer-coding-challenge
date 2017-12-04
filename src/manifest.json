@@ -1,0 +1,16 @@
+{
+    "name": "Telnyx",
+    "short_name": "Telnyx",
+    "start_url": ".",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#ffffff",
+    "theme_color": "#00ba84",
+    "description": "Telnyx",
+    "icons": [
+        {
+            "src": "\/assets\/logo.svg",
+            "sizes": "48x48 72x72 96x96 128x128 256x256"
+        }
+    ]
+}

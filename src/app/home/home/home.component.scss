@@ -1,0 +1,7 @@
+table tbody tr td:first-child img {
+    max-height: 500px;
+
+    @media(max-width: 500px) {
+        max-height: 300px;        
+    }        
+}

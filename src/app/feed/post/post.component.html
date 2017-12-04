@@ -1,0 +1,58 @@
+<br>
+<mat-card>
+    <mat-card-content>
+        <button routerLink="/feed"
+            mat-button
+            type="button">Back</button>
+
+        <button routerLink="/create-post"
+            mat-raised-button
+            color="primary"
+            type="button">Create Post</button>
+
+        <button mat-button
+            (click)="openShareDialog()"
+            style="float: right;">
+            <mat-icon>share</mat-icon>
+            Share
+        </button>
+    </mat-card-content>
+</mat-card>
+<br>
+<mat-card *ngIf="post$ | async as post">
+    <mat-card-title>
+        {{post.title}}
+    </mat-card-title>
+    <mat-card-subtitle>
+        {{post.publish_date | date}} by
+        <a href="#"
+            class="user-link">{{post.author}}</a>
+    </mat-card-subtitle>
+    <mat-card-content>
+        <p>{{post.description}}</p>
+
+        <p [innerHTML]="post.content"></p>
+    </mat-card-content>
+</mat-card>
+<br>
+<mat-card *ngIf="!showCommentsPreloader"
+    class="comments-container">
+    <mat-card-title>
+        <span *ngIf="comments?.length === 1">{{comments?.length}} Comment</span>
+        <span *ngIf="comments?.length !== 1">{{comments?.length}} Comments</span>
+    </mat-card-title>
+    <mat-card-content>
+        <app-create-comment [postId]="(post$ | async)?.id"
+            (commentCreated)="commentCreated($event)"></app-create-comment>
+
+        <div *ngFor="let commentItem of comments">
+            <app-comment [comment]="commentItem"></app-comment>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="showCommentsPreloader">
+    <mat-card-content>
+        <mat-spinner class="preloader"></mat-spinner>
+    </mat-card-content>
+</mat-card>

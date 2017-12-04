@@ -1,0 +1,45 @@
+<div *ngIf="!showPreloader">
+    <mat-card>
+        <mat-card-content>
+            <button routerLink="/create-post"
+                mat-raised-button
+                color="primary"
+                type="button">Create Post</button>
+
+            <button mat-button
+                [matMenuTriggerFor]="menu"
+                style="float: right;">
+                <mat-icon>sort</mat-icon>
+                Sort By
+            </button>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngFor="let post of posts"
+        routerLink="{{post.id}}">
+        <mat-card-title>
+            {{post.title}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{post.publish_date | date}} by
+            <a href="#"
+                class="user-link">{{post.author}}</a>
+        </mat-card-subtitle>
+        <mat-card-content>
+            {{post.description}}
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<mat-card *ngIf="showPreloader">
+    <mat-card-content>
+        <mat-spinner class="preloader"></mat-spinner>
+    </mat-card-content>
+</mat-card>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item
+        (click)="sortNewestFirst()">Newest first</button>
+    <button mat-menu-item
+        (click)="sortOldestFirst()">Oldest first</button>
+</mat-menu>

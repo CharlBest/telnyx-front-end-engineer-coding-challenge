@@ -1,0 +1,137 @@
+<br>
+<mat-card>
+    <mat-card-title>
+        Welcome!
+    </mat-card-title>
+    <mat-card-content>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="assets/demo/1.png" />
+                    </td>
+                    <td>
+                        <p>This is the feed page. Showing all the posts from newest to oldest.</p>
+                        <p>You can also see that the menu has changed to a 2 row layout for mobile.</p>
+                        <p>You can navigate to create a new post, sort the feed and click on an individual item to view it.</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="assets/demo/2.png" />
+                    </td>
+                    <td>
+                        <p>Here you can see how you can sort the feed by newest first or oldest first.</p>
+                        <p>This is a local (temp) setting and will revert to default on page refresh</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="assets/demo/3.png" />
+                    </td>
+                    <td>
+                        <p>When you click on a single post in the feed you will navigate to a page with only that post and its
+                            full content</p>
+                        <p>You will also see all of its comments at the bottom of the page and create a new one</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="assets/demo/4.png" />
+                    </td>
+                    <td>
+                        <p>Comments and replies can have emoji added via the emoji panel</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="assets/demo/5.png" />
+                    </td>
+                    <td>
+                        <p>Users can reply on replies infinitely.</p>
+                        <p>This was more to show the functionality than to show how it will actually work in real life.</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="assets/demo/6.png" />
+                    </td>
+                    <td>
+                        <p>Posts can be shared via a dialog with the post URL. There is also a convenient copy button.</p>
+                        <p>This is primarily for desktop usage as on mobile there will be a native share option to share to
+                            3rd party apps.</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="assets/demo/7.png" />
+                    </td>
+                    <td>
+                        <p>The create post page has a HTML editor for the post content.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>More info:</h3>
+        <ul>
+            <li>Responsive design</li>
+            <li>Use of new rxjs 5.5 lettable operators</li>
+            <li>Lazy loading routes for less initial data transfer to user</li>
+            <li>Implement custom loading strategy for preloading most used modules</li>
+            <li>Separate routes into separate modules for better code readability and maintenance</li>
+            <li>Shared folder for navigation layout, models and more</li>
+            <li>Applied Angular Style Guide for documented best practises like using modules, create separate folder for component
+                HTML, SCSS, Typescript, keeping ngOnInit very clean, try using async pipe as it auto subscribes and unsubscribe
+                from the observable when the component gets destroyed, prefix all component selectors with "app" and more.</li>
+            <li>Used aysnc pipe sometimes. I'm not a big fan of them because of the lack of error handling and custom logic at
+                retrieval.
+            </li>
+            <li>Use new HTTP Client for strongly typed data responses (with models).</li>
+            <li>Use Angular 5</li>
+            <li>Use Title service to change browser tab text for each page</li>
+            <li>Using route params maps rather than snapshots so that url can be changed and UI can be updated dynamically.</li>
+            <li>I decided to keep the individual post component in the feed module and not in its own module because the chance
+                is very likely that if they are on the feed page they will at least open one post so loading all of it at
+                once will result in better performance and experience.</li>
+            <li>
+                I decided to use the forms module in some places and in some not.
+                <ul>
+                    <li>
+                        Create comment page:
+                        <p>Will likely be used a lot and loads the create component with the comment which means bringing in
+                            the forms module for every request (even if it will be cached) I don't think it's necessary especially
+                            because it's only one text field and validation can be done manually. Thus I just used template
+                            variables and reference the value of the input with the create button.</p>
+                    </li>
+                    <li>
+                        Create post page:
+                        <p>This page however has multiple inputs and more validation will be needed.</p>
+                        <p>Can still be done with template variable but I thought I'd use the chance to show reactive forms.</p>
+                    </li>
+                </ul>
+            </li>
+            <li>I saw that the post content was HTML so I added an WYSIWYG editor to stay consistent</li>
+            <li>I went with the traditional blog layout as that is what people understand and won't confuse the user. That said
+                it should be unique, new and stand out.</li>
+            <li>In the create comment component I show some component two-way binding (banana in a box)</li>
+            <li>Web share API for native mobile share experience</li>
+            <li>Angular Material (CDK) Component Dev Kit for custom overlay for emoji picker</li>
+            <li>Sort by feature. Preference is only local to the session so refreshing the page will apply the default.</li>
+            <li>Basic manifest.json for a better "Add to home screen" for progressive web app enhancements.</li>
+            <li>Unit tests for all components</li>
+            <li>Very basic NodeJS server for hosting Angular dist on Heroku</li>
+            <li>Custom domain <a href="https://telnyx.charlbest.com">https://telnyx.charlbest.com</a></li>
+            <li>Custom Angular directive for emoji inputs (contentEditable dom element) with listeners and inputs</li>
+            <li>Show preloaders (progress spinners) when loading data or sending data</li>
+        </ul>
+
+    </mat-card-content>
+</mat-card>

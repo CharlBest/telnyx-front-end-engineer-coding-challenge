@@ -1,0 +1,28 @@
+<!-- specifically not using [hidden] and rather *ngIf otherwise it will potentially overload (fill) the dom unnecessarily -->
+<div *ngIf="show">
+
+    <span [appEmojiPanel]="emojiPanel"
+        [placeholder]="'Add a reply...'"
+        #replyInput></span>
+    <app-emoji-panel #emojiPanel></app-emoji-panel>
+
+    <br>
+
+    <button (click)="hideCommentInput()"
+        mat-button
+        type="button"
+        *ngIf="comment !== null">Cancel</button>
+
+    <button (click)="createReply(replyInput.innerHTML)"
+        mat-raised-button
+        color="primary"
+        type="submit">
+        <span *ngIf="comment !== null">Reply</span>
+        <span *ngIf="comment === null">Comment</span>
+    </button>
+
+    <mat-spinner *ngIf="showPreloader"
+        class="preloader"
+        style="display: inline-block;"></mat-spinner>
+
+</div>

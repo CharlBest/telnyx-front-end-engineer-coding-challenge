@@ -1,0 +1,29 @@
+<div *ngIf="comment !== undefined && comment !== null">
+    <p>
+        <strong>
+            {{comment.user}}
+            <span class="post-comment-date">{{comment.date | date}}</span>
+        </strong>
+    </p>
+
+    <p class="comment-content"
+        [innerHTML]="comment.content"></p>
+
+    <button (click)="showReplyInput = true"
+        mat-button
+        type="button">Reply</button>
+
+    <span *ngIf="comment['replies']?.length === 1">{{comment['replies']?.length}} reply</span>
+    <span *ngIf="comment['replies']?.length > 1">{{comment['replies']?.length}} replies</span>
+
+    <br>
+
+    <app-create-comment [comment]="comment"
+        [postId]="comment.postId"
+        [(show)]="showReplyInput"></app-create-comment>
+
+    <div *ngFor="let reply of comment['replies']">
+        <app-comment [comment]="reply"
+            class="reply-block"></app-comment>
+    </div>
+</div>
