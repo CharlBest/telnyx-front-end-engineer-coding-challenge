@@ -34,6 +34,6 @@ describe('HomeComponent', () => {
     it('has welcome message', async(() => {
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('p').textContent).toContain('Welcome!');
+        expect(compiled.querySelector('mat-card-title').textContent).toContain('Welcome!');
     }));
 });

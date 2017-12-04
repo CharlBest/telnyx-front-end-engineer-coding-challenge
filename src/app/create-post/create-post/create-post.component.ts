@@ -3,8 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-// import * as Quill from 'quill';
-import Quill from 'quill';
+import * as Quill from 'quill';
 import { CreatePostService } from '../create-post.service';
 import { Post } from '../../shared/models/post.model';
 
@@ -17,8 +16,8 @@ export class CreatePostComponent implements OnInit, AfterViewInit {
 
     @Input() editorDomElement: HTMLDivElement = null;
     form: FormGroup;
-    // quill: any = Quill;
-    editor: Quill;
+    quill: any = Quill;
+    editor: Quill.Quill;
     showPreloader = false;
 
     constructor(private title: Title,
@@ -37,7 +36,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit {
     }
 
     initQuillEditor() {
-        this.editor = new Quill(`#editor`, {
+        this.editor = new this.quill(`#editor`, {
             modules: {
                 toolbar: [
                     ['bold', 'italic'],
